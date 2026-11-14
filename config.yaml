@@ -1,0 +1,52 @@
+fixed_object:
+  color: "#2266dd"   # blue
+
+free_object:
+  color: "#dd3322"   # red
+
+line_width: 4
+
+restitution: 0.5
+friction: 1.0
+
+gravity_magnitude: 900
+
+gravity_options:
+  - label: "Down (standard)"
+    angle_degrees: 0
+  - label: "Down-Right"
+    angle_degrees: 10
+  - label: "Down-Right 2"
+    angle_degrees: 15
+  - label: "Down-Left"
+    angle_degrees: -10
+  - label: "Down-Left 2"
+    angle_degrees: -15
+
+simulation:
+  fps: 60
+  physics_substeps: 1
+
+stroke:
+  min_point_distance: 4          # px, min-distance filter while capturing
+  simplify_tolerance: 5.0        # px, stage 1: spline smoothing coefficient - how far the fitted
+                                  # curve may deviate from the raw hand-drawn points; higher = smoother/
+                                  # rounder (a circle needs enough of this to shed hand jitter and facets)
+  line_fit_tolerance: 0.75       # px, stage 2: Douglas-Peucker tolerance used to convert the smoothed
+                                  # curve into straight line segments; keep this small (well below
+                                  # simplify_tolerance) so the lines hug the curve closely and still
+                                  # look round once rendered/simulated
+  closed_loop_threshold: 30      # px, distance between start/end to treat as closed loop
+  segment_radius: 3.0            # thickness of chained-segment collision shapes
+  min_body_extent: 6             # px, minimum bounding size to accept a stroke as a valid shape
+
+tool_window:
+  width: 480
+  height: 70
+  background_color: "#2b2b2b"
+  title: "DrawPhysics Controls"
+
+overlay:
+  armed_indicator_color_fixed: "#2266dd"
+  armed_indicator_color_free: "#dd3322"
+  background_alpha: 0.0
